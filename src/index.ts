@@ -8,7 +8,8 @@ import { Binary, ClientSession, ClientSessionOptions, MongoClient } from 'mongod
 export type SerializedSession = { id: string; type: number };
 
 export function sessionSerializer(session: ClientSession): SerializedSession {
-  const { id } = session.id ?? {id: {toString: (x) => '', sub_type: -1}};
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { id } = session.id ?? { id: { toString: (_) => '', sub_type: -1 } };
   return { id: id.toString('hex'), type: id.sub_type };
 }
 
