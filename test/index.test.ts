@@ -37,9 +37,4 @@ describe('test mongodb session serializer', () => {
     session = sessionDeserializer(client, serializedSession);
     expect(session).toBeDefined();
   });
-
-  afterAll(async () => {
-    await session.endSession({ force: true, forceClear: true });
-    await client.close(true);
-  });
 });
