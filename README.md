@@ -30,6 +30,14 @@ npm install --save mongodb mongodb-session-serializer
 import { MongoClient, ReadPreference, TransactionOptions } from 'mongodb';
 import { sessionSerializer } from 'mongodb-session-serializer';
 
+export const transactionOptions: TransactionOptions = {
+  readPreference: ReadPreference.primary,
+  readConcern: { level: 'snapshot' },
+  writeConcern: { w: 'majority' },
+
+  maxCommitTimeMS: 15 * 60 * 1000, // 15 mins
+};
+
 // Connection URL - https://github.com/vhidvz/mongo-rs
 const url =
   'mongodb://root:password123@mongodb-primary:27017,mongodb-secondary-1:27018,mongodb-secondary-2:27019,mongodb-arbiter:27020/?replicaSet=rs0';
@@ -39,8 +47,16 @@ await client.connect();
 
 const session = await client.startSession();
 
-const serializedSession = sessionSerializer(session);
-// send the serialized session to another microservice
+try {
+  session.startTransaction(transactionOptions);
+
+  // do anything you want...
+
+  const serializedSession = sessionSerializer(session);
+  // send the serialized session to another microservice
+} catch {
+  await session.abortTransaction();
+}
 ```
 
 ### Deserializing
@@ -64,7 +80,7 @@ const client = new MongoClient(url);
 
 await client.connect();
 
-const session = sessionDeserializer(client /* serialized session */);
+const session = sessionDeserializer(client, /* serialized session */);
 
 try {
   session.startTransaction(transactionOptions);
