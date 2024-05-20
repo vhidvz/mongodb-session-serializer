@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   mongodb-primary:
-    image: bitnami/mongodb:6.0
+    image: bitnami/mongodb:7.0
     container_name: mongodb-primary
     ports:
       - 27017:27017
@@ -17,7 +17,7 @@ services:
       - localnet
 
   mongodb-secondary:
-    image: bitnami/mongodb:6.0
+    image: bitnami/mongodb:7.0
     container_name: mongodb-secondary
     ports:
       - 27018:27017
@@ -35,7 +35,7 @@ services:
       - localnet
 
   mongodb-arbiter:
-    image: bitnami/mongodb:6.0
+    image: bitnami/mongodb:7.0
     container_name: mongodb-arbiter
     ports:
       - 27019:27017
