@@ -13,10 +13,10 @@ This package helps you serialize a MongoDB session and use it in a microservices
 
 ## Quick Start Guide
 
-| #   | NodeJS Driver | MongoDB Community | Test |
-| --- | ------------- | ----------------- | ---- |
-| 1   | 5.x.x         | 6.x               | OK   |
-| 2   | 6.x.x         | 7.x               | OK   |
+| # | Driver                 | MongoDB |      |
+| - | ---------------------- | ------- | ---- |
+| 1 | 5.x ( `mongoose` 7.x ) | 6.x     | OK   |
+| 2 | 6.x ( `mongoose` 8.x ) | 7.x     | OK   |
 
 ### Installation
 

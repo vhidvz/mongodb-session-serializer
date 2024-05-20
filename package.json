@@ -1,6 +1,6 @@
 {
   "name": "mongodb-session-serializer",
-  "version": "1.0.4",
+  "version": "2.0.0",
   "description": "MongoDB Session Serializer/Deserializer",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -26,19 +26,28 @@
   },
   "keywords": [
     "mongodb-session",
+    "mongoose-session",
     "session-serializer",
     "mongodb-serializer",
-    "mongodb-session-serializer"
+    "mongoose-serializer",
+    "mongodb-session-serializer",
+    "mongoose-session-serializer"
   ],
   "homepage": "https://github.com/vhidvz/mongodb-session-serializer#readme",
   "peerDependencies": {
-    "mongodb": "^5.9.0 || ^6.1.0"
+    "mongodb": "^5.x || ^6.x",
+    "mongoose": "^7.x || ^8.x"
+  },
+  "peerDependenciesMeta": {
+    "mongoose": {
+      "optional": true
+    }
   },
   "devDependencies": {
     "@types/jest": "^29.5.5",
     "@typescript-eslint/eslint-plugin": "^6.7.3",
     "@typescript-eslint/parser": "^6.7.3",
-    "dotenv": "^16.3.1",
+    "dotenv": "^16.4.5",
     "eslint": "^8.50.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.0",
@@ -46,12 +55,12 @@
     "jshint": "^2.13.6",
     "make-coverage-badge": "^1.2.0",
     "prettier": "^3.0.3",
-    "rimraf": "^5.0.4",
-    "ts-jest": "^29.1.1",
-    "ts-node": "^10.9.1",
+    "rimraf": "^5.0.7",
+    "ts-jest": "^29.1.2",
+    "ts-node": "^10.9.2",
     "tsconfig-paths": "^4.2.0",
-    "typedoc": "^0.25.1",
-    "typescript": "^5.2.2"
+    "typedoc": "^0.25.13",
+    "typescript": "^5.4.5"
   },
   "publishConfig": {
     "access": "public",

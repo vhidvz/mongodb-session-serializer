@@ -24,17 +24,23 @@ describe('test mongodb session serializer', () => {
     expect(async () => await client.connect()).not.toThrow();
   });
 
+  it('should create session id', async () => {
+    session = client.startSession();
+
+    expect(session?.id).toBeDefined();
+  });
+
   it('should serialize a session', async () => {
-    serializedSession = sessionSerializer(await client.startSession());
+    serializedSession = sessionSerializer(session);
 
     expect(serializedSession).toBeDefined();
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    expect(sessionSerializer({} as any)).toStrictEqual({ id: '', type: -1 });
+    expect(sessionSerializer({} as ClientSession)).toStrictEqual({ id: '', type: -1 });
   });
 
   it('should deserialized a serialized session', async () => {
     session = sessionDeserializer(client, serializedSession);
+
     expect(session).toBeDefined();
   });
 });
