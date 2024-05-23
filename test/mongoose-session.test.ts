@@ -1,5 +1,9 @@
-import { sessionSerializer, sessionDeserializer, SerializedSession } from '../src';
-import { ClientSession, MongoClient } from 'mongodb';
+import {
+  SerializedSession,
+  sessionDeserializer,
+  sessionSerializer,
+} from '../src/mongoose-session';
+import { ClientSession, Connection, createConnection } from 'mongoose';
 
 const MONGO_CONFIG = () => {
   const host = process.env.MONGO_HOST;
@@ -14,18 +18,18 @@ const MONGO_CONFIG = () => {
 };
 
 describe('test mongodb session serializer', () => {
-  let client: MongoClient;
+  let client: Connection;
   let session: ClientSession;
   let serializedSession: SerializedSession;
 
   it('should create client', async () => {
-    client = new MongoClient(MONGO_CONFIG());
+    client = createConnection(MONGO_CONFIG());
 
-    expect(async () => await client.connect()).not.toThrow();
+    expect(client).toBeDefined();
   });
 
   it('should create session id', async () => {
-    session = client.startSession();
+    session = await client.startSession();
 
     expect(session?.id).toBeDefined();
   });

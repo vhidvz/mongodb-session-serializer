@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for mongodb-session.ts</title>
+    <title>Code coverage report for mongoose-session.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="prettify.css" />
     <link rel="stylesheet" href="base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="index.html">All files</a> mongodb-session.ts</h1>
+        <h1><a href="index.html">All files</a> mongoose-session.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>30/30</span>
+                <span class='fraction'>33/33</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>30/30</span>
+                <span class='fraction'>33/33</span>
             </div>
         
             
@@ -93,7 +93,13 @@
 <a name='L28'></a><a href='#L28'>28</a>
 <a name='L29'></a><a href='#L29'>29</a>
 <a name='L30'></a><a href='#L30'>30</a>
-<a name='L31'></a><a href='#L31'>31</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -128,9 +134,12 @@
   ServerSession,
   ClientSession as SessionClient,
 } from 'mongodb/lib/sessions';
-import { Binary, ClientSession, ClientSessionOptions, MongoClient } from 'mongodb';
+import { ClientSession, ClientSessionOptions, Connection } from 'mongoose';
+import { Binary } from 'mongodb';
 &nbsp;
 import { SerializedSession } from './type';
+&nbsp;
+export * from './type';
 &nbsp;
 export function sessionSerializer(session: ClientSession): SerializedSession {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -139,7 +148,7 @@ export function sessionSerializer(session: ClientSession): SerializedSession {
 }
 &nbsp;
 export function sessionDeserializer(
-  client: MongoClient,
+  client: Connection,
   session: SerializedSession,
   options?: ClientSessionOptions,
 ): ClientSession {
@@ -151,7 +160,7 @@ export function sessionDeserializer(
 &nbsp;
   sessionPool.sessions.push(serverSession);
 &nbsp;
-  return new SessionClient(client, sessionPool, { ...options, explicit: true });
+  return new SessionClient(client, sessionPool, options);
 }
 &nbsp;</pre></td></tr></table></pre>
 

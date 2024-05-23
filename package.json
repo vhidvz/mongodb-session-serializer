@@ -2,8 +2,8 @@
   "name": "mongodb-session-serializer",
   "version": "2.0.0",
   "description": "MongoDB Session Serializer/Deserializer",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "index.js",
+  "types": "index.d.ts",
   "scripts": {
     "debug": "jest --watch",
     "prebuild": "rimraf dist",
@@ -45,6 +45,7 @@
   },
   "devDependencies": {
     "@types/jest": "^29.5.5",
+    "@types/node": "^20.12.12",
     "@typescript-eslint/eslint-plugin": "^6.7.3",
     "@typescript-eslint/parser": "^6.7.3",
     "dotenv": "^16.4.5",
@@ -67,6 +68,17 @@
     "registry": "https://registry.npmjs.org/"
   },
   "files": [
-    "/dist"
+    "index.d.ts",
+    "index.js",
+    "index.js.map",
+    "mongodb-session.d.ts",
+    "mongodb-session.js",
+    "mongodb-session.js.map",
+    "mongoose-session.d.ts",
+    "mongoose-session.js",
+    "mongoose-session.js.map",
+    "type.d.ts",
+    "type.js",
+    "type.js.map"
   ]
 }

@@ -3,9 +3,12 @@ import {
   ServerSession,
   ClientSession as SessionClient,
 } from 'mongodb/lib/sessions';
-import { Binary, ClientSession, ClientSessionOptions, MongoClient } from 'mongodb';
+import { ClientSession, ClientSessionOptions, Connection } from 'mongoose';
+import { Binary } from 'mongodb';
 
 import { SerializedSession } from './type';
+
+export * from './type';
 
 export function sessionSerializer(session: ClientSession): SerializedSession {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -14,7 +17,7 @@ export function sessionSerializer(session: ClientSession): SerializedSession {
 }
 
 export function sessionDeserializer(
-  client: MongoClient,
+  client: Connection,
   session: SerializedSession,
   options?: ClientSessionOptions,
 ): ClientSession {

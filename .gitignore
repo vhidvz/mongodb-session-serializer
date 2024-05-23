@@ -1,3 +1,16 @@
+index.d.ts
+index.js
+index.js.map
+mongodb-session.d.ts
+mongodb-session.js
+mongodb-session.js.map
+mongoose-session.d.ts
+mongoose-session.js
+mongoose-session.js.map
+type.d.ts
+type.js
+type.js.map
+
 # Logs
 logs
 *.log
