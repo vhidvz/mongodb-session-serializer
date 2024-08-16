@@ -26,5 +26,5 @@ export function sessionDeserializer(
 
   sessionPool.sessions.push(serverSession);
 
-  return new SessionClient(client, sessionPool, options);
+  return new SessionClient(client, sessionPool, { ...options, explicit: true });
 }
