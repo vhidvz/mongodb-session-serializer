@@ -12,6 +12,7 @@
     "clean": "rm -rf ./dist && rm -rf ./coverage",
     "lint": "eslint . '*/**/*.{js,ts}' --quiet --fix",
     "format": "prettier --write \"(src|test)/**/*.(ts|js)\"",
+    "start": "node -r tsconfig-paths/register -r ts-node/register src/index.ts",
     "start:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register src/index.ts",
     "test": "jest && make-coverage-badge --report-path docs/coverage/coverage-summary.json --output-path coverage-badge.svg"
   },
